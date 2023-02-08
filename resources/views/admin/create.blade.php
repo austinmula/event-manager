@@ -26,7 +26,8 @@
                     </div>
 
                     <div class="card-body">
-                        <form action="" method="post">
+                        <form action="/users" method="post">
+                            @csrf
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" name="email" id="email" placeholder="Enter email address"/>
@@ -43,7 +44,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                           
+
                             <button type="submit" class="btn btn-primary">Create User</button>
                         </form>
                     </div>
