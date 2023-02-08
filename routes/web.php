@@ -1,5 +1,6 @@
 <?php
 
+use App\Role;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/roles', [\App\Http\Controllers\UsersController::class, 'Permission']);
+Route::resource('users', 'UsersController');
+Route::resource('roles', 'RolesController');
+
+Route::get('/add-user', function(){
+    $roles = Role::all();
+    return view('admin.create', ['roles'=> $roles]);
+});
+
+
