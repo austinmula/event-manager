@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewUserMail;
 use App\Permission;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UsersController extends Controller
 {
     public function index()
     {
         $users = User::orderBy('id', 'desc')->get();
-
         return view('admin.home', ['users' => $users]);
     }
 
@@ -40,8 +41,13 @@ class UsersController extends Controller
             $user->save();
         }
 
+        $sendToEmail = strtolower($request->email);
+        if(!empty($sendToEmail) && filter_var($sendToEmail, FILTER_VALIDATE_EMAIL)){
+            Mail::to($sendToEmail)->send(new NewUserMail($request));
+        }
 
-        return redirect('/users');
+        return back()->with(['message' => 'Email successfully sent!']);
+//        return redirect('/users');
     }
 
 }
