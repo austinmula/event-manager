@@ -28,6 +28,7 @@
                         <th scope="col">username</th>
                         <th scope="col">Email</th>
                         <th scope="col">Role</th>
+                        <th scope="col">Permissions</th>
 
                     </tr>
                     </thead>
@@ -40,12 +41,27 @@
                             <td>
                                 @if ($user->roles->isNotEmpty())
                                     @foreach ($user->roles as $role)
-                                        <span class="badge badge-secondary">
+                                        <span class="badge badge-danger">
                                     {{ $role->name }}
                                 </span>
                                     @endforeach
                                 @endif
 
+                            </td>
+{{--                            @php--}}
+{{--                                dd($user->roles);--}}
+{{--                            @endphp--}}
+
+                            <td>
+                                @if ($user->permissions->isNotEmpty())
+
+                                    @foreach ($user->permissions as $permission)
+                                        <span class="badge badge-secondary">
+                                    {{ $permission->name }}
+                                        </span>
+                                    @endforeach
+
+                                @endif
                             </td>
                         </tr>
                     @endforeach
