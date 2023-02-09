@@ -25,7 +25,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">Event Name</label>
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter username"/>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter event name"/>
                             </div>
 
 
@@ -72,13 +72,13 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="file" class="form-control-file" id="banner" name="banner">
                                 <label for="banner">Banner Image</label>
+                                <input type="file" class="form-control-file" id="banner" name="banner">
                             </div>
 
 
 
-                            <button type="submit" class="btn btn-primary">Create User</button>
+                            <button type="submit" class="btn btn-primary">Create Event</button>
                         </form>
                     </div>
                 </div>

@@ -12,6 +12,10 @@ class EventsController extends Controller
     }
 
     public function store(Request $request){
+        $path = $request->file('banner')->store('images');
+
+        
+
         dd($request->all());
     }
 
