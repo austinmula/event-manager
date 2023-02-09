@@ -32,8 +32,9 @@ Route::get('/add-user', function(){
 });
 
 Route::get('/add-event', function(){
-    $roles = Role::all();
-    return view('events.create', ['roles'=> $roles]);
+    $categories = \App\EventCategory::all();
+//    dd($categories);
+    return view('events.create', ['categories'=> $categories]);
 });
 
 
