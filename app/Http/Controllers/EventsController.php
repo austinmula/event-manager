@@ -10,7 +10,8 @@ class EventsController extends Controller
 {
     //
     public function index(){
-        return view('home');
+        $events = Event::all();
+        return view('home', ['events'=> $events]);
     }
 
     public function store(Request $request){
@@ -29,6 +30,4 @@ class EventsController extends Controller
 
         return redirect('/events');
     }
-
-
 }
